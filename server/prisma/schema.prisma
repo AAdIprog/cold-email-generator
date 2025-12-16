@@ -1,0 +1,42 @@
+generator client {
+  provider = "prisma-client-js"
+}
+
+datasource db {
+  provider = "sqlite"
+  url      = "file:./dev.db"
+}
+
+model User {
+  id               String     @id @default(uuid())
+  email            String     @unique
+  passwordHash     String
+  createdAt        DateTime   @default(now())
+  subscriptionTier String     @default("FREE")
+  campaigns        Campaign[]
+  emails           Email[]
+}
+
+model Campaign {
+  id          String   @id @default(uuid())
+  name        String
+  description String?
+  userId      String
+  user        User     @relation(fields: [userId], references: [id])
+  emails      Email[]
+  createdAt   DateTime @default(now())
+}
+
+model Email {
+  id             String    @id @default(uuid())
+  subject        String
+  body           String
+  tone           String?
+  targetAudience String?
+  userId         String
+  user           User      @relation(fields: [userId], references: [id])
+  campaignId     String?
+  campaign       Campaign? @relation(fields: [campaignId], references: [id])
+  createdAt      DateTime  @default(now())
+  updatedAt      DateTime  @updatedAt
+}

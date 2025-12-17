@@ -1,4 +1,3 @@
-import React from 'react';
 import { Plus, Mail, FolderOpen, Type } from 'lucide-react';
 import { Link } from 'react-router-dom';
 

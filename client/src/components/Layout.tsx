@@ -1,4 +1,3 @@
-import React from 'react';
 import { Link, Outlet, useLocation } from 'react-router-dom';
 import { PenTool, LayoutDashboard, Settings, Zap } from 'lucide-react';
 

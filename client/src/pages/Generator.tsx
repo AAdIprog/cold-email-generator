@@ -1,4 +1,4 @@
-import React, { useState } from 'react';
+import { useState } from 'react';
 import { Send, Copy, RefreshCw, Check, Sparkles, ChevronDown } from 'lucide-react';
 import { emailService } from '../services/api';
 
@@ -142,8 +142,8 @@ const Generator = () => {
             <button
               onClick={copyToClipboard}
               className={`text-sm font-medium flex items-center gap-2 px-4 py-2 rounded-full transition-all ${copied
-                  ? 'bg-green-100 text-green-700'
-                  : 'bg-blue-50 text-blue-600 hover:bg-blue-100'
+                ? 'bg-green-100 text-green-700'
+                : 'bg-blue-50 text-blue-600 hover:bg-blue-100'
                 }`}
             >
               {copied ? <Check size={16} /> : <Copy size={16} />}
